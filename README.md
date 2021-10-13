@@ -31,6 +31,14 @@ Install bower dependencies:
 $ bower install
 ```
 
+You'll need to run:
+
+```
+$ npm install
+```
+
+to have the grunt dependency installed.
+
 To compile and minify the web application's assets:
 
 ```
