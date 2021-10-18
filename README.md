@@ -38,19 +38,19 @@ Open a web browser to `http://localhost:3001/insight/`
 
 To run Insight UI locally in development mode:
 
-Install bower dependencies:
-
-```
-$ bower install
-```
-
 You'll need to run:
 
 ```
 $ npm install
 ```
 
-to have the grunt dependency installed.
+to have the grunt and bower dependencies installed.
+
+Install bower dependencies:
+
+```
+$ bower install
+```
 
 To compile and minify the web application's assets:
 
