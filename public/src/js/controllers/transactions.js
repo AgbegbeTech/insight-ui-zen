@@ -109,6 +109,21 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
     });
   };
 
+  var _transactionType = function (version) {
+    switch (version) {
+      case 1:
+        return 'TRANSPARENT_TX';
+      case 2:
+        return 'SHIELDED_TX_OLD';
+      case 3:
+        return 'SHIELDED_TX';
+      case 4:
+        return 'SIDECHAIN_TX';
+      case 5:
+        return 'CERTIFICATE';
+    }
+  }
+
   var _findTx = function(txid) {
     Transaction.get({
       txId: txid
@@ -116,6 +131,7 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
       $rootScope.titleDetail = tx.txid.substring(0,7) + '...';
       $rootScope.flashMessage = null;
       $scope.tx = tx;
+      $scope.transactionType = _transactionType(tx.version)
       _processTX(tx);
       $scope.txs.unshift(tx);
     }, function(e) {
