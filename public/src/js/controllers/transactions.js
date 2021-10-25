@@ -115,11 +115,11 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
         return 'TRANSPARENT_TX';
       case 2:
         return 'SHIELDED_TX_OLD';
-      case 3:
+      case -3:
         return 'SHIELDED_TX';
-      case 4:
+      case -4:
         return 'SIDECHAIN_TX';
-      case 5:
+      case -5:
         return 'CERTIFICATE';
     }
   }
