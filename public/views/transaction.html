@@ -57,6 +57,11 @@
           <td class="text-muted text-right">{{$root.currency.getConvertion((tx.fees * 1000) / tx.size) + ' per kB'}}</td>
         </tr>
         <tr>
+          <td><strong translate>Transaction Type</strong></td>
+          <td data-ng-show="tx.version" class="text-muted text-right">{{transactionType}}</td>
+          <td data-ng-show="!tx.version" class="text-muted text-right">N/A</td>
+        </tr>
+        <tr>
           <td><strong translate>Received Time</strong></td>
           <td data-ng-show="tx.time" class="text-muted text-right">{{tx.time * 1000|date:'medium'}}</td>
           <td data-ng-show="!tx.time" class="text-muted text-right">N/A</td>
