@@ -326,6 +326,26 @@
                 <span class="col-md-11 text-muted ellipsis">{{vout.scriptPubKey.asm}}</span>
                 <span class="btn-copy col-md-1" clip-copy="vout.scriptPubKey.asm"></span>
               </div>
+              <div class="small" data-ng-show="sidechainId" style="padding-top: 2em;">
+                <p><strong>Sidechain Id</strong></p>
+                <span class="col-md-11 text-muted ellipsis">{{sidechainId}}</span>
+                <span class="btn-copy col-md-1" clip-copy="sidechainId"></span>
+              </div>
+              <div class="small" data-ng-show="sidechainAddress" style="padding-top: 2em;">
+                <p><strong>Sidechain Address</strong></p>
+                <span class="col-md-11 text-muted ellipsis">{{sidechainAddress}}</span>
+                <span class="btn-copy col-md-1" clip-copy="sidechainAddress"></span>
+              </div>
+              <div class="small" data-ng-show="mcDestinationAddress" style="padding-top: 2em;">
+                <p><strong>Mainchain Destination Address</strong></p>
+                <span class="col-md-11 text-muted ellipsis">{{mcDestinationAddress}}</span>
+                <span class="btn-copy col-md-1" clip-copy="mcDestinationAddress"></span>
+              </div>
+              <div class="small" data-ng-show="maturity" style="padding-top: 2em;">
+                <p><strong>Maturity</strong></p>
+                <span class="col-md-11 text-muted ellipsis">{{maturity}}</span>
+                <span class="btn-copy col-md-1" clip-copy="maturity"></span>
+              </div>
           </div>
         </div>
         <div class="text-right">
