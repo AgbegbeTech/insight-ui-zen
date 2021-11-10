@@ -11,13 +11,26 @@ Please see the guide at [https://bitcore.io/guides/full-node](https://bitcore.io
 To manually install all of the necessary components, you can run these commands:
 
 ```bash
-npm install -g bitcore-node
+sudo npm install -g HorizenOfficial/bitcore-node-zen#{BITCORE_NODE_TAG} --unsafe
 bitcore-node create mynode
 cd mynode
-bitcore-node install insight-api
-bitcore-node install insight-ui
+bitcore-node install HorizenOfficial/insight-api-zen#{INSIGHT_API_TAG}
+bitcore-node install HorizenOfficial/insight-ui-zen
 bitcore-node start
 ```
+Where:
+
+**zend-2.x.y support:**
+```
+- BITCORE_NODE_TAG = v3.1.3
+- INSIGHT_API_TAG = v0.4.4
+```
+**zend-3.x.y support:**
+```
+- BITCORE_NODE_TAG = v4.0.0
+- INSIGHT_API_TAG = v1.0.0
+```
+
 
 Open a web browser to `http://localhost:3001/insight/`
 
