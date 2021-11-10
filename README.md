@@ -15,7 +15,7 @@ sudo npm install -g HorizenOfficial/bitcore-node-zen#{BITCORE_NODE_TAG} --unsafe
 bitcore-node create mynode
 cd mynode
 bitcore-node install HorizenOfficial/insight-api-zen#{INSIGHT_API_TAG}
-bitcore-node install HorizenOfficial/insight-ui-zen
+bitcore-node install HorizenOfficial/insight-ui-zen#{INSIGHT_UI_TAG}
 bitcore-node start
 ```
 Where:
@@ -24,11 +24,13 @@ Where:
 ```
 - BITCORE_NODE_TAG = v3.1.3
 - INSIGHT_API_TAG = v0.4.4
+- INSIGHT_UI_TAG = v0.5.0
 ```
 **zend-3.x.y support:**
 ```
 - BITCORE_NODE_TAG = v4.0.0
 - INSIGHT_API_TAG = v1.0.0
+- INSIGHT_UI_TAG = v0.5.0
 ```
 
 
