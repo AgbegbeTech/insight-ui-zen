@@ -109,6 +109,67 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
     });
   };
 
+  var _sidechainId = function (transaction) {
+    // This is the case for: Sidechain creation TX, version: -4
+    // https://explorer-testnet.horizen.io/api/tx/c205cc95d71dd7f008fe8691a79781b9d0a25ddfa2d34f367839d73b02b3e3a5
+
+    if (transaction.vsc_ccout && transaction.vsc_ccout.length > 0) {
+      return transaction.vsc_ccout[0]["scid"]
+    }
+
+    // This is the case for: MC -> SC Forward Transfer TX, version: -4
+    // https://explorer-testnet.horizen.io/api/tx/e07a3bcbdfad4b022a3f2802bb57f6445abf82daee7f076b6e39f3f6406e9848
+
+    if (transaction.vft_ccout && transaction.vft_ccout.length > 0) {
+      return transaction.vft_ccout[0]["scid"]
+    }
+
+    // This is the case for:
+    // SC Certificate no Backward Transfer, version: -5
+    // https://explorer-testnet.horizen.io/api/tx/bd395e052108d10405e5ccf917706f3600a58f3c48f11d4cdd9803d68bed24f2
+    // SC -> MC Certificate with Backward Transfer, version: -5
+    // https://explorer-testnet.horizen.io/api/tx/410a983c24f14bc0c2bef11c3274f399b99f32235742da8b3eca1ebb2986146f
+
+    if (transaction.cert) {
+      return transaction.cert["scid"]
+    }
+
+    // MC Backward Transfer Request, version: -4
+    if (transaction.vmbtr_out && transaction.vmbtr_out.length > 0) {
+      return transaction.vmbtr_out[0]["scid"]
+    }
+
+    // Ceased Sidechain Withdrawal, version: -4
+    if (transaction.vcsw_ccin && transaction.vcsw_ccin.length > 0) {
+      return transaction.vcsw_ccin[0]["scid"]
+    }
+
+    return null
+  }
+
+  var _sidechainAddress = function (transaction) {
+    // This is the case for: Sidechain creation TX, version: -4
+    if (transaction.vsc_ccout && transaction.vsc_ccout.length > 0) {
+      return transaction.vsc_ccout[0]["address"]
+    }
+
+    // This is the case for: MC -> SC Forward Transfer TX, version: -4
+    if (transaction.vft_ccout && transaction.vft_ccout.length > 0) {
+      return transaction.vft_ccout[0]["address"]
+    }
+
+    return null
+  }
+
+  var _mcDestinationAddress = function (transaction) {
+    // MC Backward Transfer Request, version: -4
+    if (transaction.vmbtr_out && transaction.vmbtr_out.length > 0) {
+      return transaction.vmbtr_out[0]["mcDestinationAddress"]
+    }
+
+    return null
+  }
+
   var _findTx = function(txid) {
     Transaction.get({
       txId: txid
@@ -116,6 +177,11 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
       $rootScope.titleDetail = tx.txid.substring(0,7) + '...';
       $rootScope.flashMessage = null;
       $scope.tx = tx;
+      $scope.transactionType = tx.version
+      $scope.sidechainId = _sidechainId(tx)
+      $scope.sidechainAddress = _sidechainAddress(tx)
+      $scope.maturity = tx.certificateState
+      $scope.mcDestinationAddress = _mcDestinationAddress(tx)
       _processTX(tx);
       $scope.txs.unshift(tx);
     }, function(e) {
