@@ -24,13 +24,13 @@ Where:
 ```
 - BITCORE_NODE_TAG = v3.1.3
 - INSIGHT_API_TAG = v0.4.4
-- INSIGHT_UI_TAG = v0.5.0
+- INSIGHT_UI_TAG = v0.4.0
 ```
 **zend-3.x.y support:**
 ```
 - BITCORE_NODE_TAG = v4.0.0
 - INSIGHT_API_TAG = v1.0.0
-- INSIGHT_UI_TAG = v0.5.0
+- INSIGHT_UI_TAG = v0.4.0
 ```
 
 
