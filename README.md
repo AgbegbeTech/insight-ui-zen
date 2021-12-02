@@ -29,7 +29,7 @@ Where:
 **zend-3.x.y support:**
 ```
 - BITCORE_NODE_TAG = v4.0.0
-- INSIGHT_API_TAG = v1.0.0
+- INSIGHT_API_TAG = v1.0.1
 - INSIGHT_UI_TAG = v0.4.0
 ```
 
